@@ -1,17 +1,19 @@
 name: Module Builder
+
 on:
   push:
     branches:
       - main
-      - master
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Zip Files
         working-directory: ./
         run: zip -r ./module.zip ./*
+
       - name: Get Version
         shell: bash
         id: get-version
@@ -19,12 +21,12 @@ jobs:
 
       - name: Create Release
         id: create-release
-        uses: ncipollo/release-action@v1
+        uses: /release-action@v1
         with:
           allowUpdates: true
-          name : Release ${{ steps.get_version.outputs.version }}
+          name : Release ${{ stepsncipollo.get-version.outputs.version }}
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './module.zip, ./module.json'
-          tag: ${{ steps.get_version.outputs.version }}
+          tag: ${{ steps.get-version.outputs.version }}
