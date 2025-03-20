@@ -22,7 +22,7 @@ jobs:
         id: create_release
         uses: ncipollo/release-action@v1
         with:
-          allow_updates: true
+          allowUpdates: true
           name : Release ${{ steps.get_version.outputs.version }}
           draft: false
           prerelease: false
