@@ -21,10 +21,10 @@ jobs:
 
       - name: Create Release
         id: create-release
-        uses: /release-action@v1
+        uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          name : Release ${{ stepsncipollo.get-version.outputs.version }}
+          name : Release ${{ steps.get-version.outputs.version }}
           draft: false
           prerelease: false
           token: ${{ secrets.GITHUB_TOKEN }}
